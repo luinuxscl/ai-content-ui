@@ -1,0 +1,264 @@
+/**
+ * Laravel AI Content UI - CSS Principal
+ * 
+ * Este archivo contiene los estilos base para todos los componentes del sistema de UI.
+ * Se construye sobre DaisyUI y Tailwind CSS.
+ */
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/**
+ * Variables y configuración de tema
+ */
+:root {
+  --primary: #4f46e5;
+  --secondary: #64748b;
+  --accent: #0ea5e9;
+  --neutral: #3d4451;
+  --base-100: #ffffff;
+  --base-200: #f8fafc;
+  --base-300: #e2e8f0;
+  --base-content: #1e293b;
+  --info: #3abff8;
+  --success: #36d399;
+  --warning: #fbbd23;
+  --error: #f87272;
+
+  --radius: 0.5rem;
+  --radius-sm: 0.25rem;
+  --radius-lg: 0.75rem;
+  --rounded-box: var(--radius);
+  --rounded-btn: var(--radius-sm);
+  --rounded-badge: var(--radius-sm);
+}
+
+[data-theme="dark"] {
+  --primary: #6366f1;
+  --secondary: #94a3b8;
+  --accent: #38bdf8;
+  --neutral: #2a323c;
+  --base-100: #1e293b;
+  --base-200: #0f172a;
+  --base-300: #020617;
+  --base-content: #f1f5f9;
+  --info: #0ea5e9;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+}
+
+/**
+ * Componentes
+ */
+
+/* Botones */
+.btn {
+  @apply inline-flex items-center justify-center px-4 py-2 border border-transparent 
+         font-medium rounded-md text-white focus:outline-none focus:ring-2 
+         focus:ring-offset-2 transition-colors;
+}
+
+.btn-primary {
+  @apply bg-primary hover:bg-primary/90 focus:ring-primary/50;
+}
+
+.btn-secondary {
+  @apply bg-secondary hover:bg-secondary/90 focus:ring-secondary/50;
+}
+
+.btn-accent {
+  @apply bg-accent hover:bg-accent/90 focus:ring-accent/50;
+}
+
+.btn-success {
+  @apply bg-success hover:bg-success/90 focus:ring-success/50;
+}
+
+.btn-error {
+  @apply bg-error hover:bg-error/90 focus:ring-error/50;
+}
+
+.btn-warning {
+  @apply bg-warning hover:bg-warning/90 focus:ring-warning/50 text-neutral;
+}
+
+.btn-info {
+  @apply bg-info hover:bg-info/90 focus:ring-info/50;
+}
+
+.btn-ghost {
+  @apply bg-transparent border-transparent text-base-content hover:bg-base-300/30;
+}
+
+.btn-outline {
+  @apply bg-transparent border-current text-current hover:bg-current hover:text-base-100;
+}
+
+.btn-link {
+  @apply bg-transparent border-transparent text-primary hover:underline;
+}
+
+.btn-sm {
+  @apply px-3 py-1 text-sm;
+}
+
+.btn-lg {
+  @apply px-6 py-3 text-lg;
+}
+
+/* Cards */
+.card {
+  @apply bg-base-100 rounded-box shadow overflow-hidden;
+}
+
+.card-body {
+  @apply p-6;
+}
+
+.card-header {
+  @apply p-6 pb-0;
+}
+
+.card-footer {
+  @apply p-6 pt-0;
+}
+
+/* Alerts */
+.alert {
+  @apply p-4 rounded-box mb-4 flex items-start;
+}
+
+.alert-info {
+  @apply bg-info/20 text-info;
+}
+
+.alert-success {
+  @apply bg-success/20 text-success;
+}
+
+.alert-warning {
+  @apply bg-warning/20 text-warning;
+}
+
+.alert-error {
+  @apply bg-error/20 text-error;
+}
+
+.alert-icon {
+  @apply mr-3 mt-0.5;
+}
+
+.alert-content {
+  @apply flex-1;
+}
+
+.alert-title {
+  @apply font-bold mb-1;
+}
+
+.alert-description {
+  @apply text-sm;
+}
+
+.alert-close {
+  @apply -mr-1 -mt-1 ml-auto p-1;
+}
+
+/* Badges */
+.badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.badge-primary {
+  @apply bg-primary/10 text-primary;
+}
+
+.badge-secondary {
+  @apply bg-secondary/10 text-secondary;
+}
+
+.badge-accent {
+  @apply bg-accent/10 text-accent;
+}
+
+.badge-success {
+  @apply bg-success/10 text-success;
+}
+
+.badge-error {
+  @apply bg-error/10 text-error;
+}
+
+.badge-warning {
+  @apply bg-warning/10 text-warning;
+}
+
+.badge-info {
+  @apply bg-info/10 text-info;
+}
+
+/* Modal */
+.modal {
+  @apply fixed inset-0 z-50 overflow-y-auto hidden;
+}
+
+.modal.show {
+  @apply block;
+}
+
+.modal-dialog {
+  @apply relative w-full max-w-lg mx-auto my-8 p-4;
+}
+
+.modal-content {
+  @apply bg-base-100 rounded-box shadow-lg relative flex flex-col w-full;
+}
+
+.modal-header {
+  @apply flex justify-between items-center p-4 border-b border-base-300;
+}
+
+.modal-body {
+  @apply p-4;
+}
+
+.modal-footer {
+  @apply flex justify-end gap-2 p-4 border-t border-base-300;
+}
+
+.btn-close {
+  @apply text-base-content/60 hover:text-base-content;
+}
+
+/* Dropdown */
+.dropdown {
+  @apply relative inline-block;
+}
+
+.dropdown-toggle {
+  @apply inline-flex items-center;
+}
+
+.dropdown-toggle::after {
+  content: "";
+  @apply ml-2 border-t-4 border-l-3 border-r-3 border-transparent border-t-current;
+}
+
+.dropdown-menu {
+  @apply absolute z-10 mt-1 rounded-box shadow-lg bg-base-100 border border-base-300 
+         min-w-[10rem] py-1 hidden;
+}
+
+.dropdown-menu.show {
+  @apply block;
+}
+
+.dropdown-item {
+  @apply block w-full px-4 py-2 text-left text-sm text-base-content hover:bg-base-200 focus:outline-none;
+}
+
+.dropdown-divider {
+  @apply my-1 border-t border-base-300;
+}
