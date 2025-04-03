@@ -1,0 +1,3 @@
+[submodule "docs"]
+	path = docs
+	url = git@github.com:luinuxscl/ai-content-platform-docs.git
