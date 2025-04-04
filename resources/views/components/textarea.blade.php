@@ -1,24 +1,30 @@
-<div class="form-control w-full {{ $class ?? '' }}">
+@props([
+    'name' => '',
+    'id' => null,
+    'label' => null,
+    'error' => null,
+    'hint' => null,
+    'optional' => false,
+    'class' => '',
+    'size' => '',
+    'hasError' => false,
+    'disabled' => false,
+])
+
+<div class="form-control w-full {{ $class }}">
     @if (isset($label))
         <label for="{{ $id ?? $name }}" class="label text-subtitle">
             <span class="label-text">{{ $label }}</span>
-            @if (isset($optional) && $optional)
+            @if ($optional)
                 <span class="label-text-alt text-small">(Opcional)</span>
             @endif
         </label>
     @endif
 
-    <select id="{{ $id ?? $name }}" name="{{ $name ?? '' }}"
+    <textarea id="{{ $id ?? $name }}" name="{{ $name }}" {{ $disabled ? 'disabled' : '' }}
         {{ $attributes->merge([
-            'class' => 'select-custom w-full ' . ($hasError ? 'select-error' : '') . ' ' . ($size ?? ''),
-        ]) }}>
-        @if (isset($placeholder))
-            <option value="" {{ !isset($value) || $value === '' ? 'selected' : '' }} disabled>{{ $placeholder }}
-            </option>
-        @endif
-
-        {{ $slot }}
-    </select>
+            'class' => 'textarea-custom w-full ' . ($hasError ? 'textarea-error' : '') . ' ' . $size,
+        ]) }}>{{ $slot }}</textarea>
 
     @if (isset($error))
         <label class="label">
