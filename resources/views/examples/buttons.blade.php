@@ -40,13 +40,17 @@
                             </div>
                             
                             <div class="mt-6 bg-slate-100 dark:bg-slate-800 p-4 rounded-md">
-                                <pre class="text-sm text-slate-800 dark:text-slate-300 overflow-x-auto"><code>&lt;x-ui-button&gt;Predeterminado&lt;/x-ui-button&gt;
-&lt;x-ui-button color="primary"&gt;Primario&lt;/x-ui-button&gt;
-&lt;x-ui-button color="secondary"&gt;Secundario&lt;/x-ui-button&gt;
-&lt;x-ui-button color="success"&gt;Éxito&lt;/x-ui-button&gt;
-&lt;x-ui-button color="danger"&gt;Peligro&lt;/x-ui-button&gt;
-&lt;x-ui-button color="warning"&gt;Advertencia&lt;/x-ui-button&gt;
-&lt;x-ui-button color="info"&gt;Información&lt;/x-ui-button&gt;</code></pre>
+                                <pre class="starter-text text-sm text-slate-800 dark:text-slate-300 overflow-x-auto">
+                                    <code>
+                                        &lt;x-ui-button&gt;Predeterminado&lt;/x-ui-button&gt;
+                                        &lt;x-ui-button color="primary"&gt;Primario&lt;/x-ui-button&gt;
+                                        &lt;x-ui-button color="secondary"&gt;Secundario&lt;/x-ui-button&gt;
+                                        &lt;x-ui-button color="success"&gt;Éxito&lt;/x-ui-button&gt;
+                                        &lt;x-ui-button color="danger"&gt;Peligro&lt;/x-ui-button&gt;
+                                        &lt;x-ui-button color="warning"&gt;Advertencia&lt;/x-ui-button&gt;
+                                        &lt;x-ui-button color="info"&gt;Información&lt;/x-ui-button&gt;
+                                    </code>
+                                </pre>
                             </div>
                         </div>
                     </section>
