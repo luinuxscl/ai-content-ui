@@ -1,40 +1,6 @@
-@props([
-    'name' => '',
-    'id' => null,
-    'label' => null,
-    'error' => null,
-    'hint' => null,
-    'optional' => false,
-    'class' => '',
-    'size' => '',
-    'hasError' => false,
-    'disabled' => false,
-])
+@props(['disabled' => false])
 
-<div class="form-control w-full {{ $class }}">
-    @if (isset($label))
-        <label for="{{ $id ?? $name }}" class="label text-subtitle">
-            <span class="label-text">{{ $label }}</span>
-            @if ($optional)
-                <span class="label-text-alt text-small">(Opcional)</span>
-            @endif
-        </label>
-    @endif
-
-    <textarea id="{{ $id ?? $name }}" name="{{ $name }}" {{ $disabled ? 'disabled' : '' }}
-        {{ $attributes->merge([
-            'class' => 'textarea-custom w-full ' . ($hasError ? 'textarea-error' : '') . ' ' . $size,
-        ]) }}>{{ $slot }}</textarea>
-
-    @if (isset($error))
-        <label class="label">
-            <span class="label-text-alt text-error text-small">{{ $error }}</span>
-        </label>
-    @endif
-
-    @if (isset($hint))
-        <label class="label">
-            <span class="label-text-alt text-small">{{ $hint }}</span>
-        </label>
-    @endif
-</div>
+<textarea {{ $disabled ? 'disabled' : '' }} {!! $attributes->merge([
+    'class' =>
+        'border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-xs',
+]) !!}></textarea>

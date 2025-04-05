@@ -15,7 +15,8 @@ class AiContentUiServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../../config/ai-content-ui.php', 'ai-content-ui'
+            __DIR__ . '/../../config/ai-content-ui.php',
+            'ai-content-ui'
         );
     }
 
@@ -35,6 +36,12 @@ class AiContentUiServiceProvider extends ServiceProvider
             __DIR__ . '/../../resources/js' => public_path('vendor/ai-content-ui/js'),
         ], 'ai-content-ui-assets');
 
+        // Publicar assets para Vite (nuevo)
+        $this->publishes([
+            __DIR__ . '/../../resources/css' => resource_path('css/vendor/ai-content-ui'),
+            __DIR__ . '/../../resources/js' => resource_path('js/vendor/ai-content-ui'),
+        ], 'ai-content-ui-vite-assets');
+
         // Publicar vistas
         $this->publishes([
             __DIR__ . '/../../resources/views' => resource_path('views/vendor/ai-content-ui'),
@@ -42,10 +49,13 @@ class AiContentUiServiceProvider extends ServiceProvider
 
         // Cargar vistas
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'ai-content-ui');
+        
+        // Cargar componentes (ambos namespaces para compatibilidad)
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views/components', 'ai-content-ui-components');
 
         // Registrar componentes Blade
         $this->registerComponents();
-        
+
         // Cargar rutas de prueba si estamos en entorno de desarrollo
         if ($this->app->environment('local')) {
             $this->registerTestRoutes();
@@ -58,7 +68,7 @@ class AiContentUiServiceProvider extends ServiceProvider
     private function registerComponents(): void
     {
         $this->callAfterResolving(BladeCompiler::class, function (BladeCompiler $blade) {
-            // Fase 1: Componentes básicos
+            // Componentes básicos (Fase 1)
             $blade->component('ai-content-ui::components.button', 'ui-button');
             $blade->component('ai-content-ui::components.card', 'ui-card');
             $blade->component('ai-content-ui::components.alert', 'ui-alert');
@@ -66,12 +76,11 @@ class AiContentUiServiceProvider extends ServiceProvider
             $blade->component('ai-content-ui::components.modal', 'ui-modal');
             $blade->component('ai-content-ui::components.dropdown', 'ui-dropdown');
             
-            // Fase 2: Componentes de formulario
-            $blade->component('ai-content-ui::components.input', 'ui-input');
-            $blade->component('ai-content-ui::components.select', 'ui-select');
+            // Tema claro/oscuro
+            $blade->component('ai-content-ui::components.dark-mode-toggle', 'ui-dark-mode-toggle');
         });
     }
-    
+
     /**
      * Registrar rutas para pruebas y desarrollo.
      */
@@ -81,8 +90,8 @@ class AiContentUiServiceProvider extends ServiceProvider
             ->prefix('ai-content-ui')
             ->namespace('Luinuxscl\\AiContentUi\\Http\\Controllers')
             ->group(function () {
-                Route::get('test', 'TestController@index')->name('ai-content-ui.test');
-                Route::get('test/forms', 'TestController@forms')->name('ai-content-ui.test.forms');
+                Route::get('/', 'TestController@index')->name('ai-content-ui.index');
+                Route::get('/component/{component}', 'TestController@show')->name('ai-content-ui.show');
             });
     }
 }

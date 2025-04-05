@@ -49,6 +49,23 @@ php artisan vendor:publish --tag=ai-content-ui-config
 php artisan vendor:publish --tag=ai-content-ui-views
 ```
 
+5. Importar los estilos CSS en tu archivo de estilos principal `resources/css/app.css`:
+
+```css
+/**
+*  Integración del paquete ai-content-ui
+*/
+@import '../../vendor/luinuxscl/ai-content-ui/resources/css/ai-content-ui.css';
+```
+
+6. Asegúrate de compilar tus assets después de importar los estilos:
+
+```bash
+npm run dev   # Para desarrollo
+# o
+npm run build # Para producción
+```
+
 ## Uso Básico
 
 Una vez instalado, puedes usar los componentes en tus vistas Blade:

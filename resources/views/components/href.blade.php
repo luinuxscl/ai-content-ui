@@ -1,23 +1,27 @@
 @props(['href', 'class' => '', 'variant' => 'default'])
+
 @php
+    $baseClasses =
+        'inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs uppercase tracking-widest focus:outline-hidden focus:ring-2 focus:ring-offset-2 disabled:opacity-50 transition ease-in-out duration-150 cursor-pointer';
+
     $variantClasses = [
-        'default' => 'text-link',
-        'danger' => 'text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300',
-        'warning' => 'text-yellow-600 dark:text-yellow-400 hover:text-yellow-700 dark:hover:text-yellow-300',
-        'nulled' => 'text-gray-600 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300',
-        'info' => 'text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300',
-        'success' => 'text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300',
-        'secondary' => 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100',
+        'default' =>
+            'bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-800 hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800',
+        'danger' =>
+            'bg-red-600 dark:bg-red-500 text-white hover:bg-red-700 dark:hover:bg-red-600 focus:bg-red-700 dark:focus:bg-red-600 active:bg-red-800 dark:active:bg-red-700 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800',
+        'warning' =>
+            'bg-yellow-500 dark:bg-yellow-400 text-white dark:text-gray-800 hover:bg-yellow-600 dark:hover:bg-yellow-500 focus:bg-yellow-600 dark:focus:bg-yellow-500 active:bg-yellow-700 dark:active:bg-yellow-600 focus:ring-yellow-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800',
+        'nulled' =>
+            'bg-gray-500 dark:bg-gray-400 text-white dark:text-gray-800 hover:bg-gray-600 dark:hover:bg-gray-500 focus:bg-gray-600 dark:focus:bg-gray-500 active:bg-gray-700 dark:active:bg-gray-600 focus:ring-gray-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800',
+        'info' =>
+            'bg-blue-500 dark:bg-blue-400 text-white dark:text-gray-800 hover:bg-blue-600 dark:hover:bg-blue-500 focus:bg-blue-600 dark:focus:bg-blue-500 active:bg-blue-700 dark:active:bg-blue-600 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800',
+        'success' =>
+            'bg-green-500 dark:bg-green-400 text-white dark:text-gray-800 hover:bg-green-600 dark:hover:bg-green-500 focus:bg-green-600 dark:focus:bg-green-500 active:bg-green-700 dark:active:bg-green-600 focus:ring-green-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800',
+        'secondary' =>
+            'bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 text-gray-700 dark:text-gray-300 shadow-xs hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 me-2',
     ];
-    $classes = $variantClasses[$variant] . ' ' . $class;
+
+    $classes = $baseClasses . ' ' . $variantClasses[$variant] . ' ' . $class;
 @endphp
-<a href="{{ $href }}" class="{{ $classes }}">
-    {{ $slot }}
-    @if ($variant === 'default')
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="icon-link">
-            <path fill-rule="evenodd"
-                d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
-                clip-rule="evenodd" />
-        </svg>
-    @endif
-</a>
+
+<a href="{{ $href }}" class="{{ $classes }}">{{ $slot }}</a>
