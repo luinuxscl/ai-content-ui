@@ -4,21 +4,21 @@
 
 <div class="space-y-12">
     <!-- Tarjeta básica -->
-    <section>
-        <h2 class="text-xl font-medium text-gray-800 dark:text-gray-200 mb-4">Tarjeta Básica</h2>
-        <div class="p-6 bg-gray-50 dark:bg-gray-700/50 rounded-lg border border-gray-200 dark:border-gray-700">
+    <section class="bg-gray-50 dark:bg-gray-700 rounded-lg">
+        <div class="p-6">
             <div class="max-w-md">
-                <x-ui-card>
-                    <h3 class="text-lg font-medium">Título de la tarjeta</h3>
-                    <p class="mt-2 text-gray-600 dark:text-gray-400">Este es un ejemplo de una tarjeta básica con título y texto.</p>
+                <x-ui-card title="Basic Card">
+                    <p class="text-gray-600 dark:text-gray-400">Este es un ejemplo de una tarjeta básica con título y texto.</p>
                 </x-ui-card>
             </div>
             
             <div class="mt-6 bg-slate-100 dark:bg-slate-800 p-4 rounded-md">
-                <pre class="text-sm text-slate-800 dark:text-slate-300 overflow-x-auto"><code>&lt;x-ui-card&gt;
-    &lt;h3 class="text-lg font-medium"&gt;Título de la tarjeta&lt;/h3&gt;
-    &lt;p class="mt-2 text-gray-600 dark:text-gray-400"&gt;Este es un ejemplo de una tarjeta básica con título y texto.&lt;/p&gt;
-&lt;/x-ui-card&gt;</code></pre>
+                <pre class="text-sm text-slate-800 dark:text-slate-300 overflow-x-auto">
+                    <code>&lt;x-ui-card title="Basic Card"&gt;
+&lt;p class="mt-2 text-gray-600 dark:text-gray-400"&gt;Este es un ejemplo de una tarjeta básica con título y texto.&lt;/p&gt;
+&lt;/x-ui-card&gt;
+                    </code>
+                </pre>
             </div>
         </div>
     </section>
@@ -44,7 +44,8 @@
             </div>
             
             <div class="mt-6 bg-slate-100 dark:bg-slate-800 p-4 rounded-md">
-                <pre class="text-sm text-slate-800 dark:text-slate-300 overflow-x-auto"><code>&lt;x-ui-card&gt;
+                <pre class="text-sm text-slate-800 dark:text-slate-300 overflow-x-auto">
+                    <code>&lt;x-ui-card&gt;
     &lt;x-slot:header&gt;
         &lt;h3 class="text-lg font-medium"&gt;Cabecera de la tarjeta&lt;/h3&gt;
     &lt;/x-slot:header&gt;
