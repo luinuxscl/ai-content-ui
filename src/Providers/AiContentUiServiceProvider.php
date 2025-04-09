@@ -75,6 +75,8 @@ class AiContentUiServiceProvider extends ServiceProvider
             $blade->component('ai-content-ui::components.badge', 'ui-badge');
             $blade->component('ai-content-ui::components.modal', 'ui-modal');
             $blade->component('ai-content-ui::components.dropdown', 'ui-dropdown');
+            $blade->component('ai-content-ui::components.code-mockup', 'code-block');
+            $blade->component('ai-content-ui::components.code-mockup', 'ui-code');
             
             // Tema claro/oscuro
             $blade->component('ai-content-ui::components.dark-mode-toggle', 'ui-dark-mode-toggle');
@@ -92,6 +94,11 @@ class AiContentUiServiceProvider extends ServiceProvider
             ->group(function () {
                 Route::get('/', 'TestController@index')->name('ai-content-ui.index');
                 Route::get('/component/{component}', 'TestController@show')->name('ai-content-ui.show');
+                
+                // Ruta de depuración - Acceso directo al template sin pasar por el controlador
+                Route::get('/debug', function () {
+                    return view('ai-content-ui::examples.debug');
+                })->name('ai-content-ui.debug');
             });
     }
 }
